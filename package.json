@@ -1,0 +1,52 @@
+{
+  "name": "ezlib",
+  "version": "1.0.1",
+  "main": "index.js",
+  "author": "G.Sinnott",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": "15.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/autr/ezlib.git"
+  },
+  "keywords": [
+    "api",
+    "piapi",
+    "raspberrypi",
+    "rest",
+    "crud"
+  ],
+  "scripts": {
+    "start": "nodemon dev.js"
+  },
+  "bugs": {
+    "url": "https://github.com/autr/ezlib/issues"
+  },
+  "homepage": "https://github.com/autr/ezlib#readme",
+  "dependencies": {
+    "async": "^3.2.0",
+    "dist-exiftool": "^10.53.0",
+    "exifr": "^6.1.1",
+    "ezapi": "file:../ezapi",
+    "fluent-ffmpeg": "^2.1.2",
+    "generic-stdout-parser": "^1.0.1",
+    "ini-alt": "^2.0.1",
+    "linux-app-list": "^1.0.1",
+    "midi": "^1.0.0",
+    "mime": "^2.5.2",
+    "node-exiftool": "^2.3.0",
+    "node-vibrant": "^3.2.1-alpha.1",
+    "open": "^8.0.2",
+    "puppeteer-core": "^8.0.0",
+    "rclone-api": "^1.0.9",
+    "sharp": "^0.27.2",
+    "shelljs": "^0.8.4",
+    "videocore": "^1.0.0",
+    "wireless-tools-alt": "^0.19.1",
+    "xpm2png": "^1.0.1",
+    "xrandr": "^1.1.3"
+  }
+}
