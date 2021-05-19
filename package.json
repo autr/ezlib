@@ -38,6 +38,7 @@
     "midi": "^1.0.0",
     "mime": "^2.5.2",
     "node-exiftool": "^2.3.0",
+    "node-fetch": "^2.6.1",
     "node-vibrant": "^3.2.1-alpha.1",
     "open": "^8.0.2",
     "puppeteer-core": "^8.0.0",
@@ -46,6 +47,7 @@
     "shelljs": "^0.8.4",
     "videocore": "^1.0.0",
     "wireless-tools-alt": "^0.19.1",
+    "ws": "^7.4.5",
     "xpm2png": "^1.0.1",
     "xrandr": "^1.1.3"
   }
