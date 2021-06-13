@@ -6,6 +6,34 @@ const exiftool = require('node-exiftool')
 const exiftoolBin = require('dist-exiftool')
 const Vibrant = require('node-vibrant')
 
+const is_file_type = ( str, file ) => {
+	return file.mime.indexOf(str) != -1
+}
+
+
+const extract_dimensions = (file) => {
+	let width, height, ratio
+	try {
+		if (is_file_type('image', file)) {
+			const s = file.exif[0].ImageSize.split('x')
+			width = parseInt( s[0] )
+			height = parseInt( s[1] )
+		}
+		if (is_file_type('video', file)) {
+			file.ffprobe.streams.forEach( stream => {
+				if (stream?.width != undefined) width = stream.width
+				if (stream?.height != undefined) height = stream.height
+			})
+		}
+
+		ratio = (height/width)
+	} catch(err) {
+		console.error( err )
+	}
+	return { width, height, ratio }
+}
+
+
 
 let ep = new exiftool.ExiftoolProcess( exiftoolBin )
 ep.open()
@@ -52,7 +80,7 @@ async function get_exif( url ) {
 
 async function stat( url, params ) {
 
-	console.log('[api-utilities] 🖼  running stat on:', url)
+	// console.log('[api-utilities] 🖼  running stat on:', url)
 	const stat = await fs.statSync( url )
 	let out = {
 		...stat,
@@ -61,25 +89,28 @@ async function stat( url, params ) {
 		name: path.basename( url, path.extname( url ) ),
 		extname: path.extname( url ),
 		isDirectory: stat.isDirectory(),
-		mime: mime.getType( path.extname( url ) ),
+		mime: mime.getType( path.extname( url ) ) || 'folder',
 	}
 	out.unique_id = UNIQUE_FILE_ID(out)
 
-	if ((out?.mime || '').indexOf('video') != -1 && params.ffprobe) {
+	if (out.mime.indexOf('video') != -1 && params.ffprobe) {
 		const probe = await ffprobe( url, params )
 		if (!probe.error) out.ffprobe = probe
 	}
-	if ((out?.mime || '').indexOf('image') != -1 && params.exif) {
+	if (out.mime.indexOf('image') != -1 && params.exif) {
 		const exif = await get_exif( url, params )
 		if (!exif.error) out.exif = exif
 	}
-	if ((out?.mime || '').indexOf('image') != -1 && params.vibrant) {
+	if (out.mime.indexOf('image') != -1 && params.vibrant) {
 		const vibe = await vibrant( url, params )
 		if (!vibe.error) out.vibrant = vibe
 	}
+
+	out.dimensions = extract_dimensions( out )
+
 	return out
 }
 
 
 
-module.exports = { ffprobe, stat, get_exif, vibrant }
+module.exports = { ffprobe, stat, get_exif, vibrant, extract_dimensions }

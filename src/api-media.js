@@ -8,7 +8,6 @@ const sharp = require('sharp')
 const utilities = require('./utilities.js')
 const ffmpeg = require('fluent-ffmpeg')
 
-
 module.exports = [
 
 	// ---------------- CAT_MEDIA ----------------

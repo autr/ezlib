@@ -23,31 +23,6 @@ module.exports = [
 			},
 			ffprobe: {
 				type: 'boolean'
-			}
-		},
-		data: async params => {
-			return await utilities.stat(  path.join( params.path, data[i] ), params )
-		}
-	},
-
-	{
-		url: '/ls',
-		type: 'get',
-		description: 'list files and folders',
-		category: types.CAT_FILE,
-		schema: {
-			expand: {
-				type: 'boolean'
-			},
-			path: {
-				type: 'string',
-				required: true
-			},
-			recursive: {
-				type: 'boolean'
-			},
-			ffprobe: {
-				type: 'boolean'
 			},
 			exif: {
 				type: 'boolean'
@@ -57,14 +32,28 @@ module.exports = [
 			}
 		},
 		data: async params => {
+			return await utilities.stat(  params.path, params )
+		}
+	},
+
+	{
+		url: '/ls',
+		type: 'get',
+		description: 'list files and folders',
+		category: types.CAT_FILE,
+		schema: {
+			path: {
+				type: 'string',
+				required: true
+			},
+			recursive: {
+				type: 'boolean'
+			}
+		},
+		data: async params => {
 			let args = [ params.path ]
 			if ( params.recursive ) args.unshift( '-R' )
 			let data = await shell.ls( ...args )
-			if ( params.expand ) {
-				for (let i = 0; i < data.length; i++ ) {
-					data[i] = await utilities.stat(  path.join( params.path, data[i] ), params )
-				}
-			}
 			if (data.stderr) throw data.stderr
 			return data
 		}
