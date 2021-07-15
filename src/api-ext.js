@@ -1,7 +1,7 @@
 // (document.querySelector('#ls-c-search__input-label').value = 'bristol') && document.querySelector('.ls-c-search__submit').click()
-
+const types = require('./types.js')
 // document.querySelector('.ls-c-locations-list-list')
-const types = require('ezapi').types
+
 const puppeteer = require('puppeteer-core')
 
 

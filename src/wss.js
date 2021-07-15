@@ -1,6 +1,6 @@
 const WebSocket = require('ws')
 const http = require('http')
-const types = require('ezapi').types
+const types = require('./types.js')
 
 let _wss = null
 

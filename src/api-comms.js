@@ -1,4 +1,4 @@
-const types = require('ezapi').types
+const types = require('./types.js')
 const midi = require('midi');
 
 

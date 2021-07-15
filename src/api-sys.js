@@ -1,3 +1,4 @@
+const types = require('./types.js')
 const os = require('os')
 const execSync = require('child_process').execSync
 const xrandr = require('xrandr')
@@ -6,7 +7,7 @@ const fs = require('fs')
 const path = require('path')
 
 
-const types = require('ezapi').types
+
 const ini = require('ini-alt')
 const videocore = require('videocore')
 

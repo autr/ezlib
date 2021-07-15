@@ -1,4 +1,4 @@
-const types = require('ezapi').types
+const types = require('./types.js')
 
 module.exports = ( conf ) => {
 

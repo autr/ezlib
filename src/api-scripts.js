@@ -1,5 +1,5 @@
 const createScriptEndpoint = require('./createScriptEndpoint.js')
-
+const types = require('./types.js')
 module.exports = [
 
 	createScriptEndpoint({

@@ -1,4 +1,4 @@
-const types = require('ezapi').types
+const types = require('./types.js')
 const { spawn, execSync, spawnSync } = require('child_process')
 const { ifconfig, iwconfig, iwlist, wpa, wpa_supplicant } = require("wireless-tools-alt")
 const pi_wifi = require("./piwifi.js")

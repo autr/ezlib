@@ -1,5 +1,5 @@
 const createScriptEndpoint = require('./src/createScriptEndpoint.js')
-const types = require('ezapi').types
+
 const utils = require('./src/utilities.js')
 
 const _endpoints = {
