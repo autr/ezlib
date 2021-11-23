@@ -29,6 +29,7 @@
     "exifr": "^7.1.2",
     "fluent-ffmpeg": "^2.1.2",
     "generic-stdout-parser": "^1.0.1",
+    "get-folder-size": "^2.0.1",
     "ini-alt": "^2.0.1",
     "linux-app-list": "^1.0.1",
     "midi": "^2.0.0",

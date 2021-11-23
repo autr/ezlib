@@ -5,6 +5,7 @@ const mime = require('mime')
 const exiftool = require('node-exiftool')
 const exiftoolBin = require('dist-exiftool')
 const Vibrant = require('node-vibrant')
+const getFolderSize = require('get-folder-size')
 
 const is_file_type = ( file, str ) => {
 
@@ -114,6 +115,16 @@ async function stat( url, params ) {
 		isDirectory: stat.isDirectory(),
 		mime: mime.getType( path.extname( url ) ) || 'folder',
 	}
+
+	if (out.isDirectory) {
+		out.size = await ( new Promise( (resolve,reject) => {
+			getFolderSize( url, (err,size) => {
+				if (err) return reject(err)
+				resolve(size)
+			} )
+		}))
+	}
+
 	out.unique_id = UNIQUE_FILE_ID(out)
 	let probe, exif, vibe
 

@@ -4,9 +4,9 @@ const path = require('path')
 const xpm2png = require('xpm2png')
 const { execSync } = require('child_process')
 const exifr = require('exifr')
-const sharp = require('sharp')
 const utilities = require('./utilities.js')
 const ffmpeg = require('fluent-ffmpeg')
+const sharp = require('sharp')
 
 module.exports = [
 
@@ -178,7 +178,6 @@ module.exports = [
 		data: async params => {
 			const tags = params.tags ? params.tags.split(',') : null
 			const exif = await exifr.gps( params.path, tags )
-			console.log('>>>>>>>', params.path, tags, exif)
 			return exif
 		}
 	},
