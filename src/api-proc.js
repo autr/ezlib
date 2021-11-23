@@ -1,15 +1,14 @@
-const types = require('./types.js')
+import * as types from './types.js'
+import os from 'os'
+import open from 'open'
+import { spawn, execSync, spawnSync } from 'child_process'
+import { wss, inform } from './wss.js'
+import { API_ERR, API_TRY, API_SUCCESS, API_OPEN, API_STDOUT, API_STDERR, API_CLOSE } from './types.js'
+
 const isLinux = process.platform != 'darwin' && process.platform != 'win32'
-
-const os = require('os')
-const open = require('open')
-const { spawn, execSync, spawnSync } = require('child_process')
-const { wss, inform } = require('./wss.js')
-const { API_ERR, API_TRY, API_SUCCESS, API_OPEN, API_STDOUT, API_STDERR, API_CLOSE } = require('./types.js')
-
 let spawned = {}
 
-module.exports = [
+export default [
 
 
 

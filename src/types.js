@@ -1,27 +1,18 @@
-
-module.exports = {
-
-    // logger types
-
-    API_ERR: '❌',
-    API_TRY: '⚡️',
-    API_SUCCESS: '✅',
-    API_OPEN: '✨',
-    API_STDOUT: '✉️',
-    API_STDERR: '👺',
-    API_CLOSE: '💨',
-
-    // categories
-
-    CAT_CORE: 'core',
-    CAT_FILE: 'filesystem',
-    CAT_AUTH: 'authentication',
-    CAT_SYS: 'system',
-    CAT_NET: 'network',
-    CAT_PROC: 'processes',
-    CAT_MEDIA: 'media',
-    CAT_COMMS: 'communication',
-    CAT_EXT: 'external',
-    CAT_DB: 'database',
-    CAT_SCRIPT: 'scripts'
-}
+export const API_ERR = '❌'
+export const API_TRY = '⚡️'
+export const API_SUCCESS = '✅'
+export const API_OPEN = '✨'
+export const API_STDOUT = '✉️'
+export const API_STDERR = '👺'
+export const API_CLOSE = '💨'
+export const CAT_CORE = 'core'
+export const CAT_FILE = 'filesystem'
+export const CAT_AUTH = 'authentication'
+export const CAT_SYS = 'system'
+export const CAT_NET = 'network'
+export const CAT_PROC = 'processes'
+export const CAT_MEDIA = 'media'
+export const CAT_COMMS = 'communication'
+export const CAT_EXT = 'external'
+export const CAT_DB = 'database'
+export const CAT_SCRIPT = 'scripts'

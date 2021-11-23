@@ -1,6 +1,7 @@
-const createScriptEndpoint = require('./createScriptEndpoint.js')
-const types = require('./types.js')
-module.exports = [
+import createScriptEndpoint from './createScriptEndpoint.js'
+import * as types from './types.js'
+
+export default [
 
 	createScriptEndpoint({
 		url: '/chromium_kiosk',

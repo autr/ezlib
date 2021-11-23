@@ -1,93 +1,93 @@
-const createScriptEndpoint = require('./src/createScriptEndpoint.js')
+export { default as createScriptEndpoint } from './src/createScriptEndpoint.js'
+export * as utils  from './src/utilities.js'
 
-const utils = require('./src/utilities.js')
+import api_cloud from './src/api-cloud.js'
+import api_comms from './src/api-comms.js'
+import api_ext from './src/api-ext.js'
+import api_file from './src/api-file.js'
+import api_media from './src/api-media.js'
+import api_capture from './src/api-capture.js'
+import api_net from './src/api-net.js'
+import api_proc from './src/api-proc.js'
+import api_sys from './src/api-sys.js'
+import api_scripts from './src/api-scripts.js'
 
 const _endpoints = {
 	cloud: {
-		data: require('./src/api-cloud.js'),
+		data: api_cloud,
 		title: 'cloud and backup',
 		description: 'TBA'
 	},
 	comms: {
-		data: require('./src/api-comms.js'),
+		data: api_comms,
 		title: 'hardware communication',
 		description: 'midi, osc, serial'
 	},
 	ext: {
-		data: require('./src/api-ext.js'),
+		data: api_ext,
 		title: 'weather',
 		description: 'weather'
 	},
 	file: {
-		data: require('./src/api-file.js'),
+		data: api_file,
 		title: 'filesystem',
 		description: 'read, write, list files and folders'
 	},
 	media: {
-		data: require('./src/api-media.js'),
+		data: api_media,
 		title: 'media',
 		description: ''
 	},
 	capture: {
-		data: require('./src/api-capture.js'),
+		data: api_capture,
 		title: 'capture',
 		description: ''
 	},
 	net: {
-		data: require('./src/api-net.js'),
+		data: api_net,
 		title: 'network and connections',
 		description: 'wlan and network connections'
 	},
 	proc: {
-		data: require('./src/api-proc.js'),
+		data: api_proc,
 		title: 'processes',
 		description: 'spawning apps and processes'
 	},
 	sys: {
-		data: require('./src/api-sys.js'),
+		data: api_sys,
 		title: 'system',
 		description: 'system preferences and information'
 	},
 	scripts: {
-		data: require('./src/api-scripts.js'),
+		data: api_scripts,
 		title: 'scripts',
 		description: 'useful and miscelleneous functions'
 	}
 }
 
-let markdown = `
+let _markdown = `
 | category | path | method | arguments | description |
 | - | - | - | - | - |`
-
-let endpoints = { all: [] }
-let methods = { }
+let __endpoints = { all: [] }
+let _methods = {}
 
 for (const [k, v] of Object.entries(_endpoints)) {
-	endpoints.all = endpoints.all.concat( v.data )
-	endpoints[k] = v.data
-	methods[k] = {}
+	__endpoints.all = __endpoints.all.concat( v.data )
+	__endpoints[k] = v.data
+	_methods[k] = {}
 	v.data.forEach( ep => {
 		const n = `${ep.type}_${ep.url.substring(1).toLowerCase().replaceAll('/', '_')}`
-		methods[k][n] = ep
+		_methods[k][n] = ep
 		const schema = (ep.schema || {})
 		const args = Object.keys(schema).map( k => {
 			const s = (schema[k]?.default) ? `=${schema[k].default}` : ''
 			return k + s
 		})
-		markdown += `
+		_markdown += `
 | ${ep.category} | ${ep.url} | ${n} | ${args.join(', ')} | ${ep.description} |`
 	})
 }
 
-
-
-
-const out = {
-	endpoints,
-	methods,
-	createScriptEndpoint,
-	markdown,
-	utils
-}
-
-module.exports = out
+export const markdown = _markdown
+export const endpoints = __endpoints
+export const methods = _methods

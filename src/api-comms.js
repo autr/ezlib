@@ -1,8 +1,8 @@
-const types = require('./types.js')
-const midi = require('midi');
+import * as types from './types.js'
+import midi from 'midi'
 
 
-module.exports = [
+export default [
 
     {
         url: '/midi',
@@ -17,7 +17,7 @@ module.exports = [
             for ( let i = 0; i < m.getPortCount(); i += 1 ) {
               inputs.push( m.getPortName( i ) );
             }
-            delete m
+            m = null
             m = await new midi.Output();
             let outputs = []
             for ( let i = 0; i < m.getPortCount(); i += 1 ) {
@@ -39,7 +39,7 @@ module.exports = [
             for ( let i = 0; i < m.getPortCount(); i += 1 ) {
               inputs.push( m.getPortName( i ) );
             }
-            delete m
+            m = null
             m = await new midi.Output();
             let outputs = []
             for ( let i = 0; i < m.getPortCount(); i += 1 ) {

@@ -1,9 +1,9 @@
-const types = require('./types.js')
-const fs = require('fs')
-const path = require('path')
-const { execSync } = require('child_process')
-const fetch = require('node-fetch')
-const stdoutparse = StdOutParser = require('generic-stdout-parser')
+import * as types from './types.js'
+import fs from 'fs'
+import path from 'path'
+import { execSync } from 'child_process'
+import fetch from 'node-fetch'
+import stdoutparse from 'generic-stdout-parser'
 
 
 const slugify = text => text.toString().toLowerCase()
@@ -11,7 +11,7 @@ const slugify = text => text.toString().toLowerCase()
     .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
     .replace(/\-\-+/g, '-')         // Replace multiple - with single -
 
-module.exports = [
+export default [
 
 	// ---------------- CAT_CAPTURE ----------------
 	{
@@ -138,7 +138,7 @@ module.exports = [
 
 			const dir = './bin/'
 			const dest = path.join( dir, 'v4l2_cards.json' )
-			if (!fs.existsSync(dir)) await fs.mkdirSync(dir, 0744)
+			if (!fs.existsSync(dir)) await fs.mkdirSync(dir, '0744')
 			if (fs.existsSync(dest) && !('rebuild' in params) ) return dest
 
 			const res = await fetch('https://www.kernel.org/doc/Documentation/media/v4l-drivers/cardlist.rst')

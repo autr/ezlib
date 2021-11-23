@@ -1,14 +1,14 @@
-const types = require('./types.js')
-const fs = require('fs')
-const path = require('path')
-const xpm2png = require('xpm2png')
-const { execSync } = require('child_process')
-const exifr = require('exifr')
-const utilities = require('./utilities.js')
-const ffmpeg = require('fluent-ffmpeg')
-const sharp = require('sharp')
+import * as types from './types.js'
+import fs from 'fs'
+import path from 'path'
+import xpm2png from 'xpm2png'
+import { execSync } from 'child_process'
+import exifr from 'exifr'
+import * as utilities from './utilities.js'
+import ffmpeg from 'fluent-ffmpeg'
+import sharp from 'sharp'
 
-module.exports = [
+export default [
 
 	// ---------------- CAT_MEDIA ----------------
 

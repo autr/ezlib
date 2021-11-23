@@ -1,13 +1,13 @@
-const types = require('./types.js')
-const os = require('os')
-const fs = require('fs')
-const path = require('path')
-const mime = require('mime')
-const shell = require('shelljs')
-const { spawn, execSync } = require('child_process')
-const utilities = require('./utilities.js')
+import * as types from './types.js'
+import os from 'os'
+import fs from 'fs'
+import path from 'path'
+import mime from 'mime'
+import shell from 'shelljs'
+import { spawn, execSync } from 'child_process'
+import * as utilities from './utilities.js'
 
-module.exports = [
+export default [
 
 	// ---------------- CAT_FILE ----------------
 

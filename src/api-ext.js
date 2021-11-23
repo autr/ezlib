@@ -1,8 +1,5 @@
-// (document.querySelector('#ls-c-search__input-label').value = 'bristol') && document.querySelector('.ls-c-search__submit').click()
-const types = require('./types.js')
-// document.querySelector('.ls-c-locations-list-list')
-
-const puppeteer = require('puppeteer-core')
+import * as types from './types.js'
+import puppeteer from 'puppeteer-core'
 
 
 const bbc = {
@@ -32,7 +29,7 @@ const block = (req) => {
 
 
 
-module.exports = [
+export default [
 
     // ----------- CAT_EXT -----------
 

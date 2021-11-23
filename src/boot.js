@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     aphy_params: 0,
     aphy_params_current: 0,
     arm_64bit: 0,

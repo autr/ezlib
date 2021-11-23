@@ -1,7 +1,7 @@
 /* Intended to be run ON the Raspberry Pi */
 
-let tools = require('wireless-tools-alt');
-let async = require('async');
+import tools from 'wireless-tools-alt'
+import async from 'async'
 
 const defaultOpenKey = 'NONE';
 const defaultEnterpriseKey = 'WPA-EAP';
@@ -24,7 +24,7 @@ const commands = {
 };
 
 
-let exec = require('child_process').exec;
+import { exec } from 'child_process'
 
 /**
 * @method scan
@@ -247,8 +247,8 @@ function setupConnection(netId, params, callback) {
  * @param {string} value Parameter value
  * @param {function} callback Returns an error if the parameter wasn't set
  */
-function setNetworkParameter(interface, networkId, name, value, callback) {
-  tools.wpa.set_network(interface, networkId, name, value, callback);
+function setNetworkParameter(iface, networkId, name, value, callback) {
+  tools.wpa.set_network(iface, networkId, name, value, callback);
 }
 
 
@@ -531,7 +531,7 @@ function replaceInCommand(text, toReplace) {
   return text;
 }
 
-module.exports = {
+export default {
   check: checkConnection,
   connectTo: connection,
   connectToId: connectToId,

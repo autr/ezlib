@@ -1,5 +1,5 @@
-const types = require('./types.js')
-const rclone_api = require('rclone-api')
+import * as types from './types.js'
+import rclone_api from 'rclone-api'
 
 
-module.exports = []
+export default []

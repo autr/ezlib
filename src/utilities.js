@@ -1,13 +1,13 @@
-const fs = require('fs')
-const path = require('path')
-const ffmpeg = require('fluent-ffmpeg')
-const mime = require('mime')
-const exiftool = require('node-exiftool')
-const exiftoolBin = require('dist-exiftool')
-const Vibrant = require('node-vibrant')
-const getFolderSize = require('get-folder-size')
+import fs from 'fs'
+import path from 'path'
+import ffmpeg from 'fluent-ffmpeg'
+import mime from 'mime'
+import exiftool from 'node-exiftool'
+import exiftoolBin from 'dist-exiftool'
+import Vibrant from 'node-vibrant'
+import getFolderSize from 'get-folder-size'
 
-const is_file_type = ( file, str ) => {
+export const is_file_type = ( file, str ) => {
 
 	const TYPES = {
 		IMAGE: ['image/png', 'image/gif', 'image/jpeg', 'image/webp'],
@@ -24,7 +24,7 @@ const is_file_type = ( file, str ) => {
 }
 
 
-const extract_dimensions = (file, objs) => {
+export const extract_dimensions = (file, objs) => {
 	let width, height, ratio
 	try {
 		if (is_file_type(file, 'IMAGE')) {
@@ -63,7 +63,7 @@ const UNIQUE_FILE_ID = ( obj ) => {
 	return `${obj.ino}-${obj.birthtimeMs}-${obj.ctimeMs}`
 }
 
-async function vibrant( url, opts ) {
+export async function vibrant( url, opts ) {
 	console.log('[ezlib] 🎨  vibrant:', url)
 	return new Promise( (resolve,reject) => { 
 		const v = new Vibrant( url, opts || {})
@@ -74,7 +74,7 @@ async function vibrant( url, opts ) {
 	})
 }
 
-async function ffprobe ( url, params ) {
+export async function ffprobe ( url, params ) {
 	console.log('[ezlib] 🎥  ffprobe:', url)
 	return new Promise( (resolve,reject) => {
 			ffmpeg.ffprobe( url, ( error, ffprobe ) => {
@@ -84,7 +84,7 @@ async function ffprobe ( url, params ) {
 	})
 }
 
-async function get_exif( url ) {
+export async function get_exif( url ) {
 	console.log('[ezlib] 📸  exif:', url)
 	return new Promise( (resolve,reject) => {
 		ep
@@ -102,7 +102,7 @@ async function get_exif( url ) {
 	})
 }
 
-async function stat( url, params ) {
+export async function stat( url, params ) {
 
 	console.log('[ezlib] 🖼  stat:', url)
 	const stat = await fs.statSync( url )
@@ -149,5 +149,3 @@ async function stat( url, params ) {
 }
 
 
-
-module.exports = { ffprobe, stat, get_exif, vibrant, extract_dimensions, is_file_type }

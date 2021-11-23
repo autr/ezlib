@@ -1,9 +1,10 @@
-const types = require('./types.js')
-const { spawn, execSync, spawnSync } = require('child_process')
-const { ifconfig, iwconfig, iwlist, wpa, wpa_supplicant } = require("wireless-tools-alt")
-const pi_wifi = require("./piwifi.js")
+import * as types from './types.js'
+import { spawn, execSync, spawnSync } from 'child_process'
+import wta from 'wireless-tools-alt'
+const { ifconfig, iwconfig, iwlist, wpa, wpa_supplicant } = wta
+import pi_wifi from './piwifi.js'
 
-module.exports = [
+export default [
 
 	// ---------------- CAT_NET ----------------
 

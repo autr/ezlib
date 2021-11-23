@@ -1,6 +1,6 @@
-const types = require('./types.js')
+import * as types from './types.js'
 
-module.exports = ( conf ) => {
+export default (conf => {
 
 	if (!conf.type) conf.type = 'get'
 	if (!conf.category) conf.category = types.CAT_SCRIPT
@@ -39,4 +39,4 @@ module.exports = ( conf ) => {
 			}
 		}
 	}
-}
+})

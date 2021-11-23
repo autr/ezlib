@@ -1,4 +1,4 @@
-const md = require('./index.js').markdown
-const fs = require('fs')
+import { markdown } from './index.js'
+import fs from 'fs'
 
-fs.writeFileSync('README.md', md)
+fs.writeFileSync('README.md', markdown)

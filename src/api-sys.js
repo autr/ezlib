@@ -1,17 +1,14 @@
-const types = require('./types.js')
-const os = require('os')
-const execSync = require('child_process').execSync
-const xrandr = require('xrandr')
-const linux_app_list = require('linux-app-list')
-const fs = require('fs')
-const path = require('path')
+import * as types from './types.js'
+import os from 'os'
+import { execSync } from 'child_process'
+import xrandr from 'xrandr'
+import linux_app_list from 'linux-app-list'
+import fs from 'fs'
+import path from 'path'
+import ini from 'ini-alt'
+import videocore from 'videocore'
 
-
-
-const ini = require('ini-alt')
-const videocore = require('videocore')
-
-module.exports = [
+export default [
 
 	{
 		url: '/os',
